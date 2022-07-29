@@ -11,7 +11,7 @@ import Foundation
 
 
 
-class Photo: Codable {
+class Photo: Codable, Equatable {
     let title:String
     let photoID: String
     let remoteURL: URL?
@@ -22,6 +22,10 @@ class Photo: Codable {
         case remoteURL = "url_z"
         case photoID = "id"
         case dateTaken = "datetaken"
+    }
+    
+    static func == (lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.photoID == rhs.photoID
     }
  
 

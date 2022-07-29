@@ -6,9 +6,60 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Photo Info View Controller-->
+        <scene sceneID="sct-eO-xbU">
+            <objects>
+                <viewController id="uu2-cW-hYC" customClass="PhotoInfoViewController" customModule="Photorama" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5ws-a1-8dk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QAI-bR-wxy">
+                                <rect key="frame" x="0.0" y="-89" width="414" height="897"/>
+                                <color key="backgroundColor" name="BgSecondary"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekG-yQ-sGY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XyS-X0-DUV">
+                                        <rect key="frame" x="18" y="8" width="378" height="758"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="BgColor"/>
+                                <constraints>
+                                    <constraint firstItem="XyS-X0-DUV" firstAttribute="leading" secondItem="ekG-yQ-sGY" secondAttribute="leadingMargin" constant="10" id="F7X-Nv-szZ"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="XyS-X0-DUV" secondAttribute="bottom" id="cTi-b3-hnQ"/>
+                                    <constraint firstItem="XyS-X0-DUV" firstAttribute="top" secondItem="ekG-yQ-sGY" secondAttribute="topMargin" id="dCR-Ct-483"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="XyS-X0-DUV" secondAttribute="trailing" constant="10" id="fRi-wf-EiX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hpl-EN-DTB"/>
+                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <constraints>
+                            <constraint firstItem="ekG-yQ-sGY" firstAttribute="top" secondItem="Hpl-EN-DTB" secondAttribute="top" id="0eh-Ps-MdJ"/>
+                            <constraint firstAttribute="bottom" secondItem="ekG-yQ-sGY" secondAttribute="bottom" id="5Xo-re-CHe"/>
+                            <constraint firstItem="QAI-bR-wxy" firstAttribute="leading" secondItem="5ws-a1-8dk" secondAttribute="leading" id="6cJ-0r-bmW"/>
+                            <constraint firstAttribute="bottom" secondItem="QAI-bR-wxy" secondAttribute="bottom" id="Cy3-PR-RvV"/>
+                            <constraint firstAttribute="trailing" secondItem="ekG-yQ-sGY" secondAttribute="trailing" id="DTs-jf-6lN"/>
+                            <constraint firstAttribute="trailing" secondItem="QAI-bR-wxy" secondAttribute="trailing" id="FxB-aR-d0I"/>
+                            <constraint firstItem="ekG-yQ-sGY" firstAttribute="leading" secondItem="5ws-a1-8dk" secondAttribute="leading" id="WDm-lr-dar"/>
+                            <constraint firstItem="QAI-bR-wxy" firstAttribute="top" secondItem="5ws-a1-8dk" secondAttribute="top" constant="-89" id="Z83-C1-fa6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QoU-eY-KNb"/>
+                    <connections>
+                        <outlet property="imageView" destination="XyS-X0-DUV" id="EdI-0o-Bog"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgo-x9-3A0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1580" y="-177"/>
+        </scene>
         <!--Photorama-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -21,29 +72,71 @@
                                 <rect key="frame" x="0.0" y="-91" width="414" height="899"/>
                                 <color key="backgroundColor" name="BgSecondary"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Md-ZG-ZyE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SR3-9j-XQJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="BgColor"/>
-                            </imageView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="ctd-PD-BGe">
+                                    <size key="itemSize" width="127" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="Y0m-ic-3nh" customClass="PhotoCollectionViewCell" customModule="Photorama" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="2" width="127" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5OP-94-yJ3">
+                                            <rect key="frame" x="0.0" y="0.0" width="127" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4oV-JV-VZh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="127" height="150"/>
+                                                </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="15U-Uh-XHq">
+                                                    <rect key="frame" x="53.5" y="65" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4oV-JV-VZh" firstAttribute="top" secondItem="5OP-94-yJ3" secondAttribute="top" id="0Lq-wJ-NSW"/>
+                                                <constraint firstItem="15U-Uh-XHq" firstAttribute="centerY" secondItem="5OP-94-yJ3" secondAttribute="centerY" id="5JO-Ll-BK4"/>
+                                                <constraint firstItem="15U-Uh-XHq" firstAttribute="centerX" secondItem="5OP-94-yJ3" secondAttribute="centerX" id="7hF-Aj-Awg"/>
+                                                <constraint firstAttribute="bottom" secondItem="4oV-JV-VZh" secondAttribute="bottom" id="YWK-wt-xqa"/>
+                                                <constraint firstItem="4oV-JV-VZh" firstAttribute="leading" secondItem="5OP-94-yJ3" secondAttribute="leading" id="bAe-pw-Zx9"/>
+                                                <constraint firstAttribute="trailing" secondItem="4oV-JV-VZh" secondAttribute="trailing" id="mrB-tW-Oeg"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="127" height="150"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="4oV-JV-VZh" id="RMy-rL-MR7"/>
+                                            <outlet property="spinner" destination="15U-Uh-XHq" id="5Va-De-GK8"/>
+                                            <segue destination="uu2-cW-hYC" kind="show" identifier="showPhoto" id="1jl-vt-hdN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
                             <constraint firstItem="awh-nd-ML4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-91" id="5gX-YY-fTl"/>
+                            <constraint firstItem="SR3-9j-XQJ" firstAttribute="leading" secondItem="awh-nd-ML4" secondAttribute="leading" id="Dap-lj-Swg"/>
+                            <constraint firstItem="SR3-9j-XQJ" firstAttribute="bottom" secondItem="awh-nd-ML4" secondAttribute="bottom" id="JCV-rm-N6S"/>
+                            <constraint firstItem="SR3-9j-XQJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Z2d-ZU-jWe"/>
                             <constraint firstItem="awh-nd-ML4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="esn-bU-Pp0"/>
                             <constraint firstAttribute="bottom" secondItem="awh-nd-ML4" secondAttribute="bottom" id="ja7-du-kjP"/>
                             <constraint firstAttribute="trailing" secondItem="awh-nd-ML4" secondAttribute="trailing" id="nbV-YX-5ew"/>
+                            <constraint firstItem="SR3-9j-XQJ" firstAttribute="trailing" secondItem="awh-nd-ML4" secondAttribute="trailing" id="p4o-Mk-2Fr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photorama" id="axk-a0-VGf"/>
                     <connections>
-                        <outlet property="imageView" destination="4Md-ZG-ZyE" id="qNr-dS-jAB"/>
+                        <outlet property="collectionView" destination="SR3-9j-XQJ" id="dp2-9I-eqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718.84057971014499" y="49.553571428571423"/>
+            <point key="canvasLocation" x="690" y="-177"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qbg-LW-Ydv">
@@ -54,6 +147,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleAspectFit" translucent="NO" id="Qum-Z0-Ype">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.58325252179999998" blue="0.094227387659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.58325252179999998" blue="0.094227387659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -62,7 +161,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Yk-Cy-W0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="50"/>
+            <point key="canvasLocation" x="-1" y="-19"/>
         </scene>
     </scenes>
     <resources>
@@ -72,6 +171,9 @@
         <namedColor name="BgSecondary">
             <color red="0.0" green="0.63921568627450975" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

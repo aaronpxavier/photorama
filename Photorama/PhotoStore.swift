@@ -13,7 +13,7 @@ enum PhotoError: Error {
     case missingImageURL
 }
 
-class PhotoStore {
+class PhotoStore: ImageStore {
 
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -29,6 +29,7 @@ class PhotoStore {
             completion(result)
         }
         task.resume()
+        
     }
     
     private func processPhotosRequest(data: Data?, error: Error?) -> Result<[Photo], Error> {
